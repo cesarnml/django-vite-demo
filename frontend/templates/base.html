@@ -1,0 +1,36 @@
+<!--  Loads custom templatetags -->
+{% load render_vite_bundle %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite Django Integration Demo</title>
+    <!-- If in DEBUG mode (i.e development), rely on vite webserver to serve frontend on port 3000-->
+    {% if debug %}
+    <script type="module" src="http://localhost:3000/@vite/client.js"></script>
+    <!-- Load HMR/React-Refresh -->
+    <script type="module">
+      import RefreshRuntime from 'http://localhost:3000/@react-refresh'
+      if (RefreshRuntime) {
+        RefreshRuntime.injectIntoGlobalHook(window)
+        window.$RefreshReg$ = () => {}
+        window.$RefreshSign$ = () => (type) => type
+        window.__vite_plugin_react_preamble_installed__ = true
+      }
+    </script>
+    {% endif %}
+  </head>
+  <body>
+    <div id="root"></div>
+    {% if debug %}
+    <!-- This entry point can be made dynamic in order to serve multiple entry points (admin, student, etc)-->
+    <script type="module" src="http://localhost:3000/main.tsx"></script>
+    {% else %}
+    <!-- Loads Vite bundled production assets -->
+    {% render_vite_bundle %}
+    <!-- All done-->
+    {% endif %}
+  </body>
+</html>

@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ["*"]
 INTERNAL_IPS = ['127.0.0.1']
 
 # Vite App Dir: point it to the folder your vite app is in.
-VITE_APP_DIR = os.path.join(BASE_DIR, "/src")
+VITE_APP_DIR = BASE_DIR + "/src"
 
 # Application definition
 
@@ -130,6 +130,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(VITE_APP_DIR, "/dist")
+    VITE_APP_DIR + "/dist",
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = BASE_DIR + "/staticfiles"

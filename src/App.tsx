@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logo from '/static/logo.svg'
+import logo from '../frontend/static/frontend/logo.svg'
 import './App.css'
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div className='App'>
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
-        <p>Hello Vite + React!</p>
+        <p>Works. Much wow! Vite + React!</p>
         <p>
           <button type='button' onClick={() => setCount((count) => count + 1)}>
             count is: {count}
